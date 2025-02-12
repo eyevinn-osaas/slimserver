@@ -32,6 +32,6 @@ PGID=${PGID:-`id -g squeezeboxserver`}
 usermod -o -u "$PUID" squeezeboxserver
 groupmod -o -g "$PGID" squeezeboxserver
 
-chown -R squeezeboxserver:squeezeboxserver /data/config /data/playlist
+chown -R squeezeboxserver:squeezeboxserver /data/config /data/playlist /data/music
 
-su squeezeboxserver -c '/usr/bin/perl /lms/slimserver.pl --prefsdir /data/config/prefs --logdir /data/config/logs --cachedir /data/config/cache --httpport $PORT $@'
+su squeezeboxserver -c 'cd /data/config; /usr/bin/perl /lms/slimserver.pl --prefsdir /data/config/prefs --logdir /data/config/logs --cachedir /data/config/cache --httpport $PORT $@'
